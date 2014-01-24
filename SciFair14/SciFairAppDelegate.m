@@ -7,6 +7,7 @@
 //
 
 #import "SciFairAppDelegate.h"
+#import <Parse/Parse.h>
 
 @implementation SciFairAppDelegate
 
@@ -18,6 +19,18 @@
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
     }
+    
+    //Intialize Parse Connection
+    
+    //Scifair14 DB
+    //[Parse setApplicationId:@"bbc1OawnjH3DPzsFUIVhXdjETvNqxIhCJWblwfnk"
+    //             clientKey:@"JQon2wQIRGGEzBPgCOdNAK5peDBAYnJobIpF6wgA"];
+    
+    //Scifair DB
+    [Parse setApplicationId:@"ElilbjTkA5ffxYRLPrDZJflZqAgmIzinTDI6E36t"
+                  clientKey:@"6oD9RGq39lAOPzmfLPxfgOaVdV4iaXJ5m48vgcch"];
+
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     return YES;
 }
 							

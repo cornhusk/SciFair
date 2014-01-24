@@ -17,10 +17,10 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
+- (void)setSelectedProject:(ProjectModel *)newSelectedProject
 {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
+    if (_selectedProject != newSelectedProject) {
+        _selectedProject = newSelectedProject;
         
         // Update the view.
         [self configureView];
@@ -35,8 +35,15 @@
 {
     // Update the user interface for the detail item.
 
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+    if (self.selectedProject) {
+        self.projectTitleView.title = self.selectedProject.projectTitle;
+        self.categoryLabel.text = self.selectedProject.category;
+        self.schoolLabel.text =self.selectedProject.school;
+        self.ratingLabel.text = self.selectedProject.rating;
+        self.projectStory1Area.text = self.selectedProject.story1;
+        self.projectStory1Area.editable = NO;
+        self.projectStory2Area.text = self.selectedProject.story2;
+        self.projectStory2Area.editable = NO;
     }
 }
 

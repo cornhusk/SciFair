@@ -7,11 +7,12 @@
 //
 
 #import "SciFairMasterViewController.h"
-
 #import "SciFairDetailViewController.h"
+#import "ProjectModel.h"
+#import <Parse/Parse.h>
 
 @interface SciFairMasterViewController () {
-    NSMutableArray *_objects;
+    NSMutableArray *_projects;
 }
 @end
 
@@ -30,12 +31,55 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+   // self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
-    self.detailViewController = (SciFairDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+//    self.navigationItem.rightBarButtonItem = addButton;
+ //   self.detailViewController = (SciFairDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+
+    if (!_projects) {
+        _projects = [[NSMutableArray alloc] init];
+    }
+    [self fetchDataFromParse];
+    
 }
+- (void)fetchDataFromParse
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"project"];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            // There was an error
+            NSLog(@"Error! %@", error);
+        
+        } else {
+
+            NSLog(@"Successfully retrieved %d projects.", objects.count);
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                NSLog(@"%@", object.objectId);
+                ProjectModel *project=[[ProjectModel alloc] init];
+                project.projectTitle=object[@"projectTitle"];
+                project.firstName=object[@"firstName"];
+                project.lastName=object[@"lastName"];
+                project.email=object[@"email"];
+                project.school=object[@"school"];
+                project.story1=object[@"story1"];
+                project.story2=object[@"story2"];
+                project.ratings=object[@"ratings"];
+                [project calculateRating];
+                project.image=object[@"image"];
+                
+                [_projects insertObject:project atIndex:0];
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+                [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            
+            }
+        }
+    }];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -45,12 +89,7 @@
 
 - (void)insertNewObject:(id)sender
 {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    [_objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
 }
 
 #pragma mark - Table View
@@ -62,15 +101,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return _projects.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    ProjectModel *project = _projects[indexPath.row];
+    cell.textLabel.text = project.projectTitle;
     return cell;
 }
 
@@ -83,7 +122,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
+        [_projects removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -109,8 +148,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSDate *object = _objects[indexPath.row];
-        self.detailViewController.detailItem = object;
+        ProjectModel *project = _projects[indexPath.row];
+        self.detailViewController.selectedProject = project;
     }
 }
 
@@ -118,8 +157,8 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        ProjectModel *project = _projects[indexPath.row];
+        [[segue destinationViewController] setSelectedProject:project];
     }
 }
 

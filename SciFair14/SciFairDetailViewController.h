@@ -7,10 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ProjectModel.h"
 @interface SciFairDetailViewController : UIViewController <UISplitViewControllerDelegate>
 
-@property (strong, nonatomic) id detailItem;
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+
+@property (strong, nonatomic) ProjectModel *selectedProject;
+
+@property (weak, nonatomic) IBOutlet UINavigationItem *projectTitleView;
+@property (weak, nonatomic) IBOutlet UILabel *schoolLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+@property (weak, nonatomic) IBOutlet UITextView *projectStory1Area;
+@property (weak, nonatomic) IBOutlet UITextView *projectStory2Area;
+@property (weak,nonatomic) IBOutlet UIImageView *projectImage;
+
 @end
