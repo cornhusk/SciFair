@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ProjectModel.h"
-@interface SciFairDetailViewController : UIViewController <UISplitViewControllerDelegate>
+@interface SciFairDetailViewController : UIViewController <UISplitViewControllerDelegate,UIScrollViewDelegate>
 
 
 
@@ -22,5 +22,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *projectStory1Area;
 @property (weak, nonatomic) IBOutlet UITextView *projectStory2Area;
 @property (weak,nonatomic) IBOutlet UIImageView *projectImage;
+@property (weak,nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

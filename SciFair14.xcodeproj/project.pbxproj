@@ -18,8 +18,11 @@
 		1B20BCDA1892FB1600BF2A7A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B20BCD01892FB1600BF2A7A /* MobileCoreServices.framework */; };
 		1B20BCDB1892FB1600BF2A7A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B20BCD11892FB1600BF2A7A /* QuartzCore.framework */; };
 		1B20BCDC1892FB1600BF2A7A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B20BCD21892FB1600BF2A7A /* Security.framework */; };
-		1B20BCDD1892FB1600BF2A7A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B20BCD31892FB1600BF2A7A /* StoreKit.framework */; };
 		1B20BCE01893086B00BF2A7A /* EditProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B20BCDF1893086B00BF2A7A /* EditProjectViewController.m */; };
+		1B9D8F04189593E700326AA0 /* project_watermark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B9D8F03189593E700326AA0 /* project_watermark.png */; };
+		1B9D8F061895951A00326AA0 /* user_watermark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B9D8F051895951A00326AA0 /* user_watermark.png */; };
+		1B9D8F091895B90100326AA0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9D8F081895B90100326AA0 /* LoginViewController.m */; };
+		1B9D8F0C1895BBDA00326AA0 /* CreateUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9D8F0B1895BBDA00326AA0 /* CreateUserViewController.m */; };
 		1BA65F071892DDBF00052FED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BA65F061892DDBF00052FED /* Foundation.framework */; };
 		1BA65F091892DDBF00052FED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BA65F081892DDBF00052FED /* CoreGraphics.framework */; };
 		1BA65F0B1892DDBF00052FED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BA65F0A1892DDBF00052FED /* UIKit.framework */; };
@@ -62,9 +65,14 @@
 		1B20BCD01892FB1600BF2A7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		1B20BCD11892FB1600BF2A7A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1B20BCD21892FB1600BF2A7A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		1B20BCD31892FB1600BF2A7A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		1B20BCDE1893086B00BF2A7A /* EditProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProjectViewController.h; sourceTree = "<group>"; };
 		1B20BCDF1893086B00BF2A7A /* EditProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProjectViewController.m; sourceTree = "<group>"; };
+		1B9D8F03189593E700326AA0 /* project_watermark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = project_watermark.png; path = ../../../../Downloads/project_watermark.png; sourceTree = "<group>"; };
+		1B9D8F051895951A00326AA0 /* user_watermark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_watermark.png; path = ../../../../Downloads/user_watermark.png; sourceTree = "<group>"; };
+		1B9D8F071895B90100326AA0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
+		1B9D8F081895B90100326AA0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
+		1B9D8F0A1895BBDA00326AA0 /* CreateUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateUserViewController.h; sourceTree = "<group>"; };
+		1B9D8F0B1895BBDA00326AA0 /* CreateUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateUserViewController.m; sourceTree = "<group>"; };
 		1BA65F031892DDBF00052FED /* SciFair14.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SciFair14.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA65F061892DDBF00052FED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1BA65F081892DDBF00052FED /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -107,7 +115,6 @@
 				1B20BCD71892FB1600BF2A7A /* AudioToolbox.framework in Frameworks */,
 				1BA65F071892DDBF00052FED /* Foundation.framework in Frameworks */,
 				1B20BCDA1892FB1600BF2A7A /* MobileCoreServices.framework in Frameworks */,
-				1B20BCDD1892FB1600BF2A7A /* StoreKit.framework in Frameworks */,
 				1B20BCD61892FB1600BF2A7A /* Accounts.framework in Frameworks */,
 				1B20BCD41892FB1600BF2A7A /* AdSupport.framework in Frameworks */,
 			);
@@ -158,7 +165,6 @@
 				1B20BCD01892FB1600BF2A7A /* MobileCoreServices.framework */,
 				1B20BCD11892FB1600BF2A7A /* QuartzCore.framework */,
 				1B20BCD21892FB1600BF2A7A /* Security.framework */,
-				1B20BCD31892FB1600BF2A7A /* StoreKit.framework */,
 				1B20BCC81892F9EE00BF2A7A /* SystemConfiguration.framework */,
 				1BA65F061892DDBF00052FED /* Foundation.framework */,
 				1BA65F081892DDBF00052FED /* CoreGraphics.framework */,
@@ -171,6 +177,10 @@
 		1BA65F0C1892DDBF00052FED /* SciFair14 */ = {
 			isa = PBXGroup;
 			children = (
+				1B9D8F071895B90100326AA0 /* LoginViewController.h */,
+				1B9D8F0A1895BBDA00326AA0 /* CreateUserViewController.h */,
+				1B9D8F0B1895BBDA00326AA0 /* CreateUserViewController.m */,
+				1B9D8F081895B90100326AA0 /* LoginViewController.m */,
 				1BA65F151892DDBF00052FED /* SciFairAppDelegate.h */,
 				1BA65F161892DDBF00052FED /* SciFairAppDelegate.m */,
 				1BA65F181892DDBF00052FED /* Main_iPhone.storyboard */,
@@ -192,6 +202,8 @@
 		1BA65F0D1892DDBF00052FED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1B9D8F051895951A00326AA0 /* user_watermark.png */,
+				1B9D8F03189593E700326AA0 /* project_watermark.png */,
 				1BA65F0E1892DDBF00052FED /* SciFair14-Info.plist */,
 				1BA65F0F1892DDBF00052FED /* InfoPlist.strings */,
 				1BA65F121892DDBF00052FED /* main.m */,
@@ -266,6 +278,14 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Alex V";
 				TargetAttributes = {
+					1BA65F021892DDBF00052FED = {
+						DevelopmentTeam = 2U7FJNCBUZ;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
+					};
 					1BA65F291892DDBF00052FED = {
 						TestTargetID = 1BA65F021892DDBF00052FED;
 					};
@@ -295,8 +315,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B9D8F04189593E700326AA0 /* project_watermark.png in Resources */,
 				1BA65F1D1892DDBF00052FED /* Main_iPad.storyboard in Resources */,
 				1BA65F251892DDBF00052FED /* Images.xcassets in Resources */,
+				1B9D8F061895951A00326AA0 /* user_watermark.png in Resources */,
 				1BA65F1A1892DDBF00052FED /* Main_iPhone.storyboard in Resources */,
 				1BA65F111892DDBF00052FED /* InfoPlist.strings in Resources */,
 			);
@@ -321,8 +343,10 @@
 				1BA65F201892DDBF00052FED /* SciFairMasterViewController.m in Sources */,
 				1BA65F171892DDBF00052FED /* SciFairAppDelegate.m in Sources */,
 				1B20BCC71892EA3300BF2A7A /* ProjectModel.m in Sources */,
+				1B9D8F091895B90100326AA0 /* LoginViewController.m in Sources */,
 				1BA65F131892DDBF00052FED /* main.m in Sources */,
 				1BA65F231892DDBF00052FED /* SciFairDetailViewController.m in Sources */,
+				1B9D8F0C1895BBDA00326AA0 /* CreateUserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +483,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/verkhovodov/Documents/ios\\ dev/SciFair14",
@@ -467,6 +493,8 @@
 				GCC_PREFIX_HEADER = "SciFair14/SciFair14-Prefix.pch";
 				INFOPLIST_FILE = "SciFair14/SciFair14-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -476,6 +504,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/verkhovodov/Documents/ios\\ dev/SciFair14",
@@ -484,6 +514,8 @@
 				GCC_PREFIX_HEADER = "SciFair14/SciFair14-Prefix.pch";
 				INFOPLIST_FILE = "SciFair14/SciFair14-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

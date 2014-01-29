@@ -9,6 +9,7 @@
 #import "SciFairMasterViewController.h"
 #import "SciFairDetailViewController.h"
 #import "ProjectModel.h"
+#import "LoginViewController.h"
 #import <Parse/Parse.h>
 
 @interface SciFairMasterViewController () {
@@ -18,11 +19,26 @@
 
 @implementation SciFairMasterViewController
 
+
+-(IBAction)toggleLogin:(id)sender{
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser.isAuthenticated) {
+        [PFUser logOut];
+        self.loginButton.titleLabel.text=@"Login";
+
+    } else {
+        self.loginButton.titleLabel.text=@"Logout";
+    }
+
+}
+
+
 - (void)awakeFromNib
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         self.clearsSelectionOnViewWillAppear = NO;
         self.preferredContentSize = CGSizeMake(320.0, 600.0);
+
     }
     [super awakeFromNib];
 }
@@ -30,22 +46,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-   // self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-//    self.navigationItem.rightBarButtonItem = addButton;
- //   self.detailViewController = (SciFairDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-
     if (!_projects) {
         _projects = [[NSMutableArray alloc] init];
     }
-    [self fetchDataFromParse];
-    
 }
+-(void)viewDidAppear:(BOOL)animated{
+    [self refresh];
+}
+-(void)refresh{
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser.isAuthenticated) {
+        self.loginButton.titleLabel.text=@"Logout";
+    }
+    [self fetchDataFromParse];
+}
+
+
 - (void)fetchDataFromParse
 {
     PFQuery *query = [PFQuery queryWithClassName:@"project"];
+    [_projects removeAllObjects];
+    [self.tableView reloadData];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
@@ -57,7 +78,6 @@
             NSLog(@"Successfully retrieved %d projects.", objects.count);
             // Do something with the found objects
             for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
                 ProjectModel *project=[[ProjectModel alloc] init];
                 project.projectTitle=object[@"projectTitle"];
                 project.firstName=object[@"firstName"];
@@ -67,8 +87,8 @@
                 project.story1=object[@"story1"];
                 project.story2=object[@"story2"];
                 project.ratings=object[@"ratings"];
-                [project calculateRating];
-                project.image=object[@"image"];
+                PFFile *theImage = [object objectForKey:@"projectImage"];
+                project.image=[theImage getData];
                 
                 [_projects insertObject:project atIndex:0];
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -160,6 +180,16 @@
         ProjectModel *project = _projects[indexPath.row];
         [[segue destinationViewController] setSelectedProject:project];
     }
+
 }
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    if([identifier isEqualToString:@"edit"]){
+        PFUser *currentUser = [PFUser currentUser];
+        return currentUser.isAuthenticated;
+        
+    }
+    return YES;
+    }
 
 @end

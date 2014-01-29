@@ -38,8 +38,9 @@
     if (self.selectedProject) {
         self.projectTitleView.title = self.selectedProject.projectTitle;
         self.categoryLabel.text = self.selectedProject.category;
+        self.nameLabel.text =self.selectedProject.firstName;
         self.schoolLabel.text =self.selectedProject.school;
-        self.ratingLabel.text = self.selectedProject.rating;
+        self.ratingLabel.text = [self.selectedProject rating];
         self.projectStory1Area.text = self.selectedProject.story1;
         self.projectStory1Area.editable = NO;
         self.projectStory2Area.text = self.selectedProject.story2;
@@ -51,7 +52,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+
+    self.projectImage.image=[UIImage imageWithData:self.selectedProject.image];
     [self configureView];
+
+
 }
 
 - (void)didReceiveMemoryWarning

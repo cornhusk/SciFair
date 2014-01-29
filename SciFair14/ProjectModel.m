@@ -10,7 +10,7 @@
 
 @implementation ProjectModel
 
--(void)calculateRating{
+-(NSString*)rating{
     NSInteger total=0;
     for (NSUInteger i = 0; i < self.ratings.count; i++)
     {
@@ -20,6 +20,17 @@
         
     }
     NSInteger average = total/self.ratings.count;
-    self.rating = [NSString stringWithFormat:@"%i", average];
+    return [NSString stringWithFormat:@"%li", (long)average];
+
 }
+- (id) init
+{
+    if (self = [super init])
+    {
+        self.ratings=[[NSArray alloc]init];
+    }
+    return self;
+}
+
+
 @end

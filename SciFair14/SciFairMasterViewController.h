@@ -12,6 +12,10 @@
 
 @interface SciFairMasterViewController : UITableViewController
 
+-(IBAction)toggleLogin:(id)sender;
+-(void)refresh;
+
+@property (weak,nonatomic) IBOutlet UIButton *loginButton;
 @property (strong, nonatomic) SciFairDetailViewController *detailViewController;
 
 @end

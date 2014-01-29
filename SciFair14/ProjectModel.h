@@ -10,20 +10,18 @@
 
 @interface ProjectModel : NSObject
 
--(void)calculateRating;
+-(NSString*)rating;
 
 @property (strong, atomic) NSString *projectTitle;
 @property (strong, atomic) NSString *category;
-@property (strong, atomic) NSString *rating;
 @property (strong, atomic) NSArray *ratings;
 @property (strong, atomic) NSString *school;
+@property (strong, atomic) NSString *grade;
 @property (strong, atomic) NSString *firstName;
 @property (strong, atomic) NSString *lastName;
 @property (strong, atomic) NSString *email;
 @property (strong, atomic) NSString *story1;
 @property (strong, atomic) NSString *story2;
-@property (strong,atomic) NSDate *createdAt;
-@property (strong,atomic) NSDate *updatedAt;
 @property (strong,atomic) NSData *image;
 
 @end
